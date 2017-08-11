@@ -22,17 +22,24 @@ import com.atguigu.util.HttpClientUtil;
 @RequestMapping("/search")
 public class SearchController {
     
+    /**
+     * 根据传来的关键字，查询联想出来的关键字，并返回
+     * @Description (TODO这里用一句话描述这个方法的作用)
+     * @param key
+     * @param before_key
+     * @return
+     * @throws Exception
+     */
     @ResponseBody
-    @RequestMapping("/key_guess/{key}_{before_key}.html")
+    @RequestMapping(value="/key_guess/{key}_{before_key}.html",produces="text/html;charset=utf-8")
     public String keyGuess(@PathVariable("key")String key, @PathVariable("before_key")String before_key) throws Exception {
         Map<String, Object> params = new HashMap<String, Object>();
-        params.put("wd", "阿里巴巴");
-        params.put("bs", "阿里");
+        params.put("wd", key);
+        params.put("bs", before_key);
         params.put("json", "1");
         String url = "https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su";
-        String httpGetRequest = HttpClientUtil.httpGetRequest(url , params);
-        System.out.println(httpGetRequest);
-        return "";
+        String httpGetRequest = HttpClientUtil.httpGetRequest(url, params);
+        return httpGetRequest;
     }
 
 }
