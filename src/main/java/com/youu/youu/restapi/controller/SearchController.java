@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.atguigu.util.HttpClientUtil;
 
@@ -18,7 +19,7 @@ import com.atguigu.util.HttpClientUtil;
  * @Date 2017年8月11日 上午9:22:42
  * @version 1.0.0
  */
-@Controller
+@RestController
 @RequestMapping("/search")
 public class SearchController {
     
@@ -30,7 +31,6 @@ public class SearchController {
      * @return
      * @throws Exception
      */
-    @ResponseBody
     @RequestMapping(value="/key_guess/{key}_{before_key}.html",produces="text/html;charset=utf-8")
     public String keyGuess(@PathVariable("key")String key, @PathVariable("before_key")String before_key) throws Exception {
         Map<String, Object> params = new HashMap<String, Object>();
