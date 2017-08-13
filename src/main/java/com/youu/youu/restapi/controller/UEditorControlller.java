@@ -42,12 +42,12 @@ public class UEditorControlller {
         //获取服务器根目录
         ServletContext servletContext = request.getSession().getServletContext();
         String realPath = servletContext.getRealPath("/");
-       // System.out.println("realPath="+realPath);
+        System.out.println("存图片realPath="+realPath);
 
         //这里upfile是config.json中图片提交的表单名称
         //文件原名称
         String fileName=upfile.getOriginalFilename();
-
+        System.out.println(fileName);
         //为了避免重复简单处理
         String nowName=new Date().getTime()+"_" + fileName;
 
@@ -75,7 +75,7 @@ public class UEditorControlller {
         //文件类型 .+后缀名
         map.put("type", fileName.substring(upfile.getOriginalFilename().lastIndexOf(".")));
         //文件路径
-        map.put("url", "/you-restapi/"+nowName+"/getImage");
+        map.put("url", "/youu-restapi/"+nowName+"/getImage");
 
         //文件大小（字节数）
         map.put("size", upfile.getSize()+"");
@@ -99,7 +99,7 @@ public class UEditorControlller {
         //获取服务器根目录
         ServletContext servletContext = request.getSession().getServletContext();
         String realPath = servletContext.getRealPath("/");
-       // System.out.println("realPath="+realPath);
+        System.out.println("取图片realPath="+realPath);
 
         //设置文件的返回类型
         response.setContentType("image/*");
